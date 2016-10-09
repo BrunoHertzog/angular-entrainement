@@ -1,9 +1,21 @@
  <!DOCTYPE html>
-<html ng-app>
+<html ng-app="notesApp">
 	<head>
 		<script src="node_modules/angular/angular.js"></script>
+		<script src="index.module.js"></script>
+		<script src="index.controller.js"></script>
 	</head>
-	<body>
-		<h1>{{1+1}}</h1>
+	<body ng-controller="MainCtrl as ctrl">
+		<span ng-bind="ctrl.helloMsg"></span> AngularJS
+		<br>
+		<button ng-click="ctrl.changeMessage(name)">
+			Change Message
+		</button>
+		<span ng-bind="ctrl.goodBye"></span> Angular JS
+		<input type="text"
+			   ng-model="name"
+			   placeholder="Enter your Name" />
+		<br>
+		<span>The name you enter is : {{name}}</span>
 	</body>
 </html>
