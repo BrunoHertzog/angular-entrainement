@@ -1,21 +1,34 @@
  <!DOCTYPE html>
 <html ng-app="notesApp">
 	<head>
+		<meta charset="utf-8">
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="index.module.js"></script>
 		<script src="index.controller.js"></script>
+		<link rel="stylesheet" href="assets/stylez.css">
 	</head>
 	<body ng-controller="MainCtrl as ctrl">
-		<span ng-bind="ctrl.helloMsg"></span> AngularJS
-		<br>
-		<button ng-click="ctrl.changeMessage(name)">
-			Change Message
-		</button>
-		<span ng-bind="ctrl.goodBye"></span> Angular JS
 		<input type="text"
 			   ng-model="name"
 			   placeholder="Enter your Name" />
 		<br>
 		<span>The name you enter is : {{name}}</span>
+		<div ng-repeat="note in ctrl.notes"
+			 ng-class="ctrl.getNoteClass(note.done)">
+			<span ng-bind="note.label"></span>
+			<span ng-bind="note.grade"></span>
+			<span class="assignee"
+				  ng-show="note.assignee"
+				  ng-bind="note.assignee">
+			</span>
+			<span>First Element: {{$first}}</span>
+		</div>
+			<br><br>
+			<div ng-repeat="(author, note)  in ctrl.notes2">
+				<span class="label" ng-bind="note.label"></span>
+				<span class="author" ng-bind="author"></span>
+				<div>First : {{$first}}</div>
+			</div>
+		</div>
 	</body>
 </html>
